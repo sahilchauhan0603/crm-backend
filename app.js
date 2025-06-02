@@ -1,8 +1,7 @@
 // route registration file
 
 const express = require('express');
-const dotenv = require('dotenv');
-dotenv.config(); // Load .env variables
+require('dotenv').config(); // Load .env variables
 
 const {setupKinde, protectRoute, getUser, GrantType} = require("@kinde-oss/kinde-node-express")
 
@@ -31,6 +30,7 @@ const segmentRoutes = require('./routes/segmentRoutes');
 const campaignRoutes = require('./routes/campaignRoutes');
 const deliveryRoutes = require('./routes/deliveryRoutes');
 const communicationLogRoutes = require('./routes/communicationLogRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 
 // Enable CORS
 app.use(cors({
@@ -48,5 +48,6 @@ app.use('/api/segments', segmentRoutes);
 app.use('/api/campaigns', campaignRoutes);
 app.use('/api/delivery', deliveryRoutes);
 app.use('/api/communication', communicationLogRoutes);
+app.use('/api/ai', aiRoutes);
 
 module.exports = app;
