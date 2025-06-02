@@ -62,7 +62,9 @@ const updateOrder = async (req, res) => {
 // Delete order
 const deleteOrder = async (req, res) => {
   try {
+    console.log(`Deleting order with ID: ${req.params.id}`); // Log the ID being deleted
     const result = await orderService.deleteOrder(req.params.id);
+    console.log(`Delete result:`, result); // Log the result of the delete operation
     res.json(result);
   } catch (error) {
     console.error('Error deleting order:', error);
