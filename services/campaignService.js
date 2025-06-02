@@ -13,7 +13,19 @@ exports.createCampaign = async (data) => {
 };
 
 exports.getAllCampaigns = async () => {
-  return await campaignModel.getAll();
+  const campaigns = await campaignModel.getAll();
+
+  const campaignsWithStats = await Promise.all(
+    campaigns.map(async (campaign) => {
+      const stats = await campaignModel.getDeliveryStats(campaign.id);
+      return {
+        ...campaign,
+        deliveryStats: stats,
+      };
+    })
+  );
+
+  return campaignsWithStats;
 };
 
 exports.getCampaignById = async (id) => {

@@ -14,8 +14,8 @@ const createCampaign = async (req, res) => {
 // Get all campaigns
 const getAllCampaigns = async (req, res) => {
   try {
-    const result = await campaignService.getAllCampaigns();
-    res.json(result);
+    const campaigns = await campaignService.getAllCampaigns();
+    res.json(campaigns);
   } catch (error) {
     console.error('Error fetching campaigns:', error);
     res.status(500).json({ error: 'Internal Server Error' });

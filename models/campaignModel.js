@@ -31,3 +31,16 @@ exports.log = async ({ campaign_id, customer_id, status, sent_at }) => {
   );
   return result;
 };
+
+exports.getDeliveryStats = async (campaignId) => {
+  const query = `
+    SELECT 
+      COUNT(*) AS audience_size,
+      SUM(CASE WHEN status = 'SENT' THEN 1 ELSE 0 END) AS sent,
+      SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) AS failed
+    FROM communication_log
+    WHERE campaign_id = ?
+  `;
+  const [rows] = await db.execute(query, [campaignId]);
+  return rows[0];
+};
