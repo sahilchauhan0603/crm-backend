@@ -59,10 +59,39 @@ const deleteSegment = async (req, res) => {
   }
 };
 
+// Save segment rules
+const saveSegmentRules = async (req, res) => {
+  try {
+    const { rules } = req.body;
+    if (!rules || !Array.isArray(rules)) {
+      return res.status(400).json({ error: 'Invalid rules format' });
+    }
+
+    const result = await segmentService.saveRules(rules);
+    res.status(201).json({ message: 'Rules saved successfully', result });
+  } catch (error) {
+    console.error('Error saving rules:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// Get segment rules
+const getSegmentRules = async (req, res) => {
+  try {
+    const rules = await segmentService.getRules();
+    res.status(200).json(rules);
+  } catch (error) {
+    console.error('Error fetching rules:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 module.exports = {
   createSegment,
   getAllSegments,
   getSegmentById,
   updateSegment,
   deleteSegment,
+  saveSegmentRules,
+  getSegmentRules,
 };

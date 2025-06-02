@@ -29,3 +29,11 @@ exports.delete = async (id) => {
   const [result] = await db.execute(query, [id]);
   return result;
 };
+
+exports.getAllRules = async () => {
+  const [rows] = await db.execute('SELECT rules FROM segments');
+  if (!rows || rows.length === 0) {
+    return [];
+  }
+  return rows.map(row => JSON.parse(row.rules));
+};

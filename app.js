@@ -31,6 +31,7 @@ const campaignRoutes = require('./routes/campaignRoutes');
 const deliveryRoutes = require('./routes/deliveryRoutes');
 const communicationLogRoutes = require('./routes/communicationLogRoutes');
 const aiRoutes = require('./routes/aiRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
 
 // Enable CORS
 app.use(cors({
@@ -49,5 +50,6 @@ app.use('/api/campaigns', campaignRoutes);
 app.use('/api/delivery', deliveryRoutes);
 app.use('/api/communication', communicationLogRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 module.exports = app;
