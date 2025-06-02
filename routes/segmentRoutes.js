@@ -5,5 +5,7 @@ const segmentController = require('../controllers/segmentController');
 router.post('/', segmentController.createSegment);
 router.get('/', segmentController.getAllSegments);
 router.get('/:id', segmentController.getSegmentById);
+router.put('/:id', segmentController.updateSegment);
+router.delete('/:id', segmentController.deleteSegment);
 
 module.exports = router;

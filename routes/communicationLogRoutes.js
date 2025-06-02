@@ -4,5 +4,7 @@ const communicationLogController = require('../controllers/communicationLogContr
 
 router.post('/status', communicationLogController.receiveStatus);
 router.get('/logs/:campaignId', communicationLogController.getLogs);
+router.put('/:id', communicationLogController.updateLog);
+router.delete('/:id', communicationLogController.deleteLog);
 
 module.exports = router;

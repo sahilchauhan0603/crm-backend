@@ -12,8 +12,18 @@ const getSegmentById = async (id) => {
   return await segmentModel.getById(id);
 };
 
+const updateSegment = async (id, data) => {
+  return await segmentModel.update(id, data);
+};
+
+const deleteSegment = async (id) => {
+  return await segmentModel.delete(id);
+};
+
 module.exports = {
   createSegment,
   getAllSegments,
   getSegmentById,
+  updateSegment,
+  deleteSegment,
 };

@@ -30,3 +30,15 @@ exports.getByCampaign = async (campaign_id) => {
   );
   return rows;
 };
+
+exports.update = async (id, data) => {
+  const query = 'UPDATE communication_log SET status = ?, sent_at = ? WHERE id = ?';
+  const [result] = await db.execute(query, [data.status, data.sent_at, id]);
+  return result;
+};
+
+exports.delete = async (id) => {
+  const query = 'DELETE FROM communication_log WHERE id = ?';
+  const [result] = await db.execute(query, [id]);
+  return result;
+};

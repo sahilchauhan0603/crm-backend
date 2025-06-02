@@ -37,8 +37,32 @@ const getCampaignById = async (req, res) => {
   }
 };
 
+// Update campaign by ID
+const updateCampaign = async (req, res) => {
+  try {
+    const result = await campaignService.updateCampaign(req.params.id, req.body);
+    res.json(result);
+  } catch (error) {
+    console.error('Error updating campaign:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// Delete campaign by ID
+const deleteCampaign = async (req, res) => {
+  try {
+    const result = await campaignService.deleteCampaign(req.params.id);
+    res.json(result);
+  } catch (error) {
+    console.error('Error deleting campaign:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 module.exports = {
   createCampaign,
   getAllCampaigns,
   getCampaignById,
+  updateCampaign,
+  deleteCampaign,
 };

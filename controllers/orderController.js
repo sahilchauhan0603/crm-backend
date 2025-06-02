@@ -48,10 +48,33 @@ const getOrderById = async (req, res) => {
   }
 };
 
+// Update order
+const updateOrder = async (req, res) => {
+  try {
+    const result = await orderService.updateOrder(req.params.id, req.body);
+    res.json(result);
+  } catch (error) {
+    console.error('Error updating order:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// Delete order
+const deleteOrder = async (req, res) => {
+  try {
+    const result = await orderService.deleteOrder(req.params.id);
+    res.json(result);
+  } catch (error) {
+    console.error('Error deleting order:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
 module.exports = {
   addOrder,
   getOrdersByCustomer,
   getAllOrders,
   getOrderById,
+  updateOrder,
+  deleteOrder,
 };

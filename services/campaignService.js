@@ -31,3 +31,11 @@ exports.getAllCampaigns = async () => {
 exports.getCampaignById = async (id) => {
   return await campaignModel.getById(id);
 };
+
+exports.updateCampaign = async (id, data) => {
+  return await campaignModel.update(id, data);
+};
+
+exports.deleteCampaign = async (id) => {
+  return await campaignModel.delete(id);
+};

@@ -17,3 +17,15 @@ exports.getById = async (id) => {
   const [rows] = await db.execute('SELECT * FROM segments WHERE id = ?', [id]);
   return rows[0];
 };
+
+exports.update = async (id, data) => {
+  const query = 'UPDATE segments SET name = ?, rules = ? WHERE id = ?';
+  const [result] = await db.execute(query, [data.name, JSON.stringify(data.rules), id]);
+  return result;
+};
+
+exports.delete = async (id) => {
+  const query = 'DELETE FROM segments WHERE id = ?';
+  const [result] = await db.execute(query, [id]);
+  return result;
+};

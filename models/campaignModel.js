@@ -44,3 +44,15 @@ exports.getDeliveryStats = async (campaignId) => {
   const [rows] = await db.execute(query, [campaignId]);
   return rows[0];
 };
+
+exports.update = async (id, data) => {
+  const query = 'UPDATE campaigns SET segment_id = ?, message = ? WHERE id = ?';
+  const [result] = await db.execute(query, [data.segment_id, data.message, id]);
+  return result;
+};
+
+exports.delete = async (id) => {
+  const query = 'DELETE FROM campaigns WHERE id = ?';
+  const [result] = await db.execute(query, [id]);
+  return result;
+};

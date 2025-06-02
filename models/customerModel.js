@@ -41,3 +41,15 @@ exports.getBySegmentRules = async (rulesJson) => {
   const [rows] = await db.execute(query, params);
   return rows;
 };
+
+exports.update = async (email, data) => {
+  const query = 'UPDATE customers SET name = ?, phone = ?, total_spent = ?, visits = ?, last_active = ? WHERE email = ?';
+  const [result] = await db.execute(query, [data.name, data.phone, data.total_spent, data.visits, data.last_active, email]);
+  return result;
+};
+
+exports.delete = async (email) => {
+  const query = 'DELETE FROM customers WHERE email = ?';
+  const [result] = await db.execute(query, [email]);
+  return result;
+};

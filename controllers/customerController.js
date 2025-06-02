@@ -38,9 +38,33 @@ const getCustomerById = async (req, res) => {
   }
 };
 
+// Update a customer
+const updateCustomer = async (req, res) => {
+  try {
+    const result = await customerService.updateCustomer(req.params.email, req.body);
+    res.json(result);
+  } catch (error) {
+    console.error('Error updating customer:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// Delete a customer
+const deleteCustomer = async (req, res) => {
+  try {
+    const result = await customerService.deleteCustomer(req.params.email);
+    res.json(result);
+  } catch (error) {
+    console.error('Error deleting customer:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 // Export all controller functions
 module.exports = {
   addCustomer,
   getAllCustomers,
-  getCustomerById
+  getCustomerById,
+  updateCustomer,
+  deleteCustomer,
 };

@@ -16,9 +16,19 @@ const getOrderById = async (id) => {
   return await orderModel.getById(id);
 };
 
+const updateOrder = async (id, data) => {
+  return await orderModel.update(id, data);
+};
+
+const deleteOrder = async (id) => {
+  return await orderModel.delete(id);
+};
+
 module.exports = {
   addOrder,
   getOrdersByCustomer,
   getAllOrders,
   getOrderById,
+  updateOrder,
+  deleteOrder,
 };

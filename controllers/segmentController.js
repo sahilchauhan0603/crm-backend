@@ -37,9 +37,32 @@ const getSegmentById = async (req, res) => {
   }
 };
 
+// Update segment by ID
+const updateSegment = async (req, res) => {
+  try {
+    const result = await segmentService.updateSegment(req.params.id, req.body);
+    res.json(result);
+  } catch (error) {
+    console.error('Error updating segment:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// Delete segment by ID
+const deleteSegment = async (req, res) => {
+  try {
+    const result = await segmentService.deleteSegment(req.params.id);
+    res.json(result);
+  } catch (error) {
+    console.error('Error deleting segment:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
 module.exports = {
   createSegment,
   getAllSegments,
   getSegmentById,
+  updateSegment,
+  deleteSegment,
 };
