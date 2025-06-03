@@ -43,12 +43,13 @@ exports.delete = async (id) => {
   return result;
 };
 
-// Updated the `findAll` method to include customer name in the query
+// Updated the `findAll` method to include campaign message in the query
 exports.findAll = async () => {
   const [rows] = await db.execute(`
-    SELECT cl.*, c.name AS customer_name
+    SELECT cl.*, c.name AS customer_name, ca.message AS campaign_message
     FROM communication_log cl
     JOIN customers c ON cl.customer_id = c.id
+    JOIN campaigns ca ON cl.campaign_id = ca.id
   `);
   return rows;
 };
