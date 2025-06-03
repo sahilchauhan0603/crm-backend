@@ -45,9 +45,21 @@ const deleteLog = async (req, res) => {
   }
 };
 
+// Controller to fetch all communication logs
+const getAllCommunicationLogs = async (req, res) => {
+  try {
+    const logs = await communicationLogService.fetchAllLogs();
+    res.status(200).json(logs);
+  } catch (error) {
+    console.error('Error fetching communication logs:', error);
+    res.status(500).json({ error: 'Failed to fetch communication logs' });
+  }
+};
+
 module.exports = {
   receiveStatus,
   getLogs,
   updateLog,
   deleteLog,
+  getAllCommunicationLogs,
 };

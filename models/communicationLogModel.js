@@ -42,3 +42,13 @@ exports.delete = async (id) => {
   const [result] = await db.execute(query, [id]);
   return result;
 };
+
+// Updated the `findAll` method to include customer name in the query
+exports.findAll = async () => {
+  const [rows] = await db.execute(`
+    SELECT cl.*, c.name AS customer_name
+    FROM communication_log cl
+    JOIN customers c ON cl.customer_id = c.id
+  `);
+  return rows;
+};
