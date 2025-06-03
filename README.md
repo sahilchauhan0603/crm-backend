@@ -122,7 +122,11 @@ API Request
 +-------------------+
 ```
 
-[🔗 Back to Top](#-backend---crm-xeno)
+### Explanation
+
+The workflow diagram illustrates the backend's process for handling API requests. It begins with an **API Request** received by **Routes**, which map the request to specific **Controllers**. The controllers process the request and call **Services** to execute business logic. Services interact with **Models** to perform database operations, and the **Database** returns the required data. This structured flow ensures efficient handling of requests and responses.
+
+[🔗 Back to Top](#backend---crm-xeno)
 
 ---
 
