@@ -179,3 +179,15 @@ The `models` directory contains database schemas and methods for interacting wit
 The `utils` directory contains helper functions, such as `campaignDispatcher.js`, which are used across multiple modules.
 
 [🔗 Back to Top](#-backend---crm-xeno)
+
+---
+
+## ⚠️ Limitations
+
+- The backend does not support WebSocket-based real-time communication.
+- Limited scalability for handling high volumes of concurrent requests.
+- No built-in support for advanced logging or monitoring.
+- Database schema is basic and may require optimization for large datasets.
+- Lack of automated testing for API endpoints.
+
+[🔗 Back to Top](#-backend---crm-xeno)
